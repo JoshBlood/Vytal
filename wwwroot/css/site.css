@@ -1,0 +1,158 @@
+﻿/* General Styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #212529;
+}
+
+/* Header Styling */
+h2 {
+    font-weight: 600;
+    border-bottom: 2px solid #dee2e6;
+    padding-bottom: 0.3rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Tables */
+.table {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background-color: white;
+}
+
+    .table th {
+        background-color: #343a40;
+        color: #ffffff;
+    }
+
+    .table td, .table th {
+        vertical-align: middle;
+    }
+
+/* Add subtle row hover */
+.table-hover tbody tr:hover {
+    background-color: #f1f3f5;
+    transition: background-color 0.2s ease;
+}
+
+/* Badges */
+.badge {
+    font-size: 0.9rem;
+    padding: 0.4em 0.6em;
+    border-radius: 0.4rem;
+}
+
+/* Alerts */
+.alert {
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
+}
+
+/* Shadow for elevated look */
+.shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+
+/* Container Spacing */
+.container {
+    max-width: 960px;
+    padding-bottom: 60px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .table th, .table td {
+        font-size: 0.9rem;
+    }
+}
+/* Light theme (default) */
+body.light-mode {
+    background-color: #f8f9fa;
+    color: #212529;
+}
+
+    body.light-mode .table {
+        background-color: white;
+    }
+
+    body.light-mode .table-hover tbody tr:hover {
+        background-color: #f1f3f5;
+    }
+
+    body.light-mode .table th {
+        background-color: #343a40;
+        color: white;
+    }
+
+/* Dark theme */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+    body.dark-mode .table {
+        background-color: #1e1e1e;
+        color: #e0e0e0;
+    }
+
+    body.dark-mode .table-hover tbody tr:hover {
+        background-color: #2c2c2c;
+    }
+
+    body.dark-mode .table th {
+        background-color: #333;
+        color: #f1f1f1;
+    }
+
+    body.dark-mode .alert {
+        background-color: #2c2c2c;
+        border-color: #444;
+        color: #f8d7da;
+    }
+
+/* Toggle Switch Styling */
+.theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+}
+/* Default light mode */
+body.light-mode .theme-navbar .nav-link {
+    color: #212529; /* Dark gray for readability */
+}
+
+/* Dark mode navbar links */
+body.dark-mode .theme-navbar .nav-link {
+    color: #ffffff !important; /* Ensure this color applies */
+}
+    body.dark-mode .theme-navbar .nav-link:hover,
+    body.dark-mode .theme-navbar .nav-link:focus {
+        color: #ffffff; /* Pure white on hover */
+        text-decoration: underline; /* Underline for extra focus */
+    }
+
+    /* Active navbar link for better indication */
+    body.dark-mode .theme-navbar .nav-link.active {
+        color: #f8f9fa; /* Brighter text for active link */
+    }
+
+/* If you have dropdowns, apply to them as well */
+body.dark-mode .theme-navbar .dropdown-menu {
+    background-color: #333333; /* Dark background for dropdown */
+    border-color: #444444; /* Slightly lighter border for dropdown */
+}
+
+body.dark-mode .theme-navbar .dropdown-item {
+    color: #ffffff; /* Lighter color for dropdown items */
+}
+
+    body.dark-mode .theme-navbar .dropdown-item:hover {
+        background-color: #555555; /* Darker background on hover */
+        color: #ffffff; /* White text on hover */
+    }
