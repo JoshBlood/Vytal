@@ -1,0 +1,82 @@
+﻿@page
+@model IndexModel
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="~/css/site.css" />
+
+
+<div class="container mt-5">
+
+    <h2 class="mb-4">Heartbeat Data</h2>
+
+    @if (Model.HeartbeatData != null && Model.HeartbeatData.Any())
+    {
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered rounded shadow-sm">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Device ID</th>
+                        <th>BPM</th>
+                        <th>Date/Time Logged</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var heartbeat in Model.HeartbeatData)
+                    {
+                        string bpmClass = heartbeat.BPM > 100 ? "text-danger font-weight-bold" :
+                        heartbeat.BPM < 60 ? "text-primary font-weight-bold" :
+                        "text-success font-weight-bold";
+                        <tr>
+                            <td>@heartbeat.DeviceId</td>
+                            <td class="@bpmClass">@heartbeat.BPM</td>
+                            <td>@heartbeat.DateLogged.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">No heartbeat data available.</div>
+    }
+
+    <h2 class="mt-5 mb-4">Occupancy Data</h2>
+
+    @if (Model.OccupancyData != null && Model.OccupancyData.Any())
+    {
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered rounded shadow-sm">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Device ID</th>
+                        <th>Occupancy Status</th>
+                        <th>Date/Time Logged</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var occupancy in Model.OccupancyData)
+                    {
+                        string occupancyBadgeClass = occupancy.OccupancyStatus == "Occupied" ? "badge badge-success" : "badge badge-secondary";
+                        <tr>
+                            <td>@occupancy.DeviceId</td>
+                            <td><span class="@occupancyBadgeClass">@occupancy.OccupancyStatus</span></td>
+                            <td>@occupancy.DateLogged.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">No occupancy data available.</div>
+    }
+
+    @if (Model.ShowWarning)
+    {
+        <div class="alert alert-danger mt-4" role="alert">
+            ⚠️ <strong>Warning:</strong> No heartbeat detected in the last 30 seconds while room is occupied!
+        </div>
+    }
+
+</div>
